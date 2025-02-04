@@ -44,6 +44,7 @@ body {
 .container {
   width: 100%;
   min-height: 95vh;
+  /* height: 100%; */
   border-radius: 15px;
   padding: 2%;
   background: #e1e3e3;
