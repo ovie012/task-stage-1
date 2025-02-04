@@ -15,6 +15,7 @@ const ColorGame = () => {
   const [options, setOptions] = useState([]);
   const [message, setMessage] = useState("Guess the correct color!");
   const [score, setScore] = useState(0);
+  const [hasGuessed, setHasGuessed] = useState(false);
 
   useEffect(() => {
     startNewGame();
@@ -29,15 +30,20 @@ const ColorGame = () => {
     setTargetColor(newTarget);
     setOptions(newOptions);
     setMessage("Guess the correct color!");
+    setHasGuessed(false);
   };
 
   const handleGuess = (selectedColor) => {
+    if (hasGuessed) return;
+
     if (selectedColor === targetColor) {
       setMessage("Ghe Ghe, You are Correct! 💃🎉");
       setScore(score + 1);
     } else {
       setMessage("Ehya, Wrong! Try again.");
     }
+
+    setHasGuessed(true);
   };
 
   return (
