@@ -39,11 +39,12 @@ const ColorGame = () => {
     if (selectedColor === targetColor) {
       setMessage("Ghe Ghe, You are Correct! 💃🎉");
       setScore(score + 1);
+      setHasGuessed(true);
     } else {
       setMessage("Ehya, Wrong! Try again.");
     }
 
-    setHasGuessed(true);
+    // setHasGuessed(true);
   };
 
   return (
