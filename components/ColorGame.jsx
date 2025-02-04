@@ -29,9 +29,22 @@ const ColorGame = () => {
 
     setTargetColor(newTarget);
     setOptions(newOptions);
-    setMessage("Guess the correct color!");
+    // setMessage("Guess the correct color!");
     setHasGuessed(false);
   };
+
+  const restart = () => {
+    const newTarget = getRandomColor();
+    const newOptions = [newTarget, ...Array(5).fill().map(getRandomColor)].sort(
+      () => Math.random() - 0.5
+    );
+
+    setTargetColor(newTarget);
+    setOptions(newOptions);
+    setHasGuessed(false);
+    setMessage("Guess the correct color!");
+    setScore(0)
+  }
 
   const handleGuess = (selectedColor) => {
     if (hasGuessed) return;
@@ -40,6 +53,7 @@ const ColorGame = () => {
       setMessage("Ghe Ghe, You are Correct! 💃🎉");
       setScore(score + 1);
       setHasGuessed(true);
+      startNewGame()
     } else {
       setMessage("Ehya, Wrong! Try again.");
     }
@@ -69,12 +83,12 @@ const ColorGame = () => {
       <h3 data-testid="score">Score: {score}</h3>
       <button
         data-testid="newGameButton"
-        onClick={startNewGame}
+        onClick={restart}
         style={{
           marginTop: "10px",
           padding: "10px 20px",
           cursor: "pointer",
-          border: `3px solid ${targetColor}` ,
+          border: `3px solid ${targetColor}`,
         }}
       >
         New Game
