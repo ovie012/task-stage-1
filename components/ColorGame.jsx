@@ -58,6 +58,7 @@ const ColorGame = () => {
           backgroundColor: targetColor,
           margin: "20px auto",
           border: "2px solid black",
+          borderRadius : "5px",
         }}
       ></div>
       <div>
