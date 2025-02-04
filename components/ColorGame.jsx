@@ -49,13 +49,29 @@ const ColorGame = () => {
   const handleGuess = (selectedColor) => {
     if (hasGuessed) return;
 
+    const successMessage = [
+      "Ghe Ghe, You are Correct! 💃🎉",
+      "yayyy, Good One 🔥",
+      "Well Done, That is the right choice 💝",
+      "Wow, You've got an eye for colors 🥳",
+      "Guess what, That's the right answer 👍"
+    ];
+
+    const failedMessage = [
+      "Ehya, Wrong! Try again. 🤦", 
+      "Ouch, So close 😒",
+      "You had a Chance, Give it another go 💔",  
+    ]
+
     if (selectedColor === targetColor) {
-      setMessage("Ghe Ghe, You are Correct! 💃🎉");
+      const randomMessage = successMessage[Math.floor(Math.random() * successMessage.length)]
+      setMessage(randomMessage);
       setScore(score + 1);
       setHasGuessed(true);
       startNewGame()
     } else {
-      setMessage("Ehya, Wrong! Try again.");
+      const randomMessage = failedMessage[Math.floor(Math.random() * failedMessage.length)]
+      setMessage(randomMessage);
     }
 
     // setHasGuessed(true);
